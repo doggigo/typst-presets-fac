@@ -41,6 +41,7 @@
     ($<=$, sym.lt.eq.slant),
     ($>=$, sym.gt.eq.slant),
     ($(->$, $arrow.r.hook$),
+    ($-+$,sym.minus.plus)
   )
 
   doc
