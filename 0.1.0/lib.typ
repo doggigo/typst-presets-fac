@@ -144,4 +144,17 @@
   }
 )
 
+#let vocabulary = thmbox(
+  "theorem",
+  "Vocabulaire",
+  base_level: 1,
+  separator : "\n",
+  stroke: rgb("#9ddb7c"),
+  fill: rgb("#a5db7c4c"),
+  bodyfmt: (bd) => {
+    set text(font: "New Computer Modern", style: "italic");
+    bd;
+  }
+)
+
 #let proof = thmproof("proof", "Preuve")
