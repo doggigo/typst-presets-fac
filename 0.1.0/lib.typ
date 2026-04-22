@@ -27,6 +27,8 @@
   set text(font: "New Computer Modern", size: fontsize, lang: "fr")
   set linebreak(justify: true)
   set par(leading: 1em, spacing: 1.3em, justify: true, linebreaks: "optimized")
+  
+  show math.equation: set text(font: "New Computer Modern Math")
   show raw: set text(font: "New Computer Modern")
 
   show math.cases: it => {
