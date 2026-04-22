@@ -16,9 +16,9 @@
   show-examples: true,
   show-exercises: true,
   show-proofs: true,
+  bar: true,
   doc,
 ) = {
-
   show-examples-state.update(show-examples)
   show-exercises-state.update(show-exercises)
   show-proofs-state.update(show-proofs)
@@ -35,23 +35,26 @@
     [#math.cases(..children.map(math.display), ..fields)<touched>]
   }
 
-  show math.equation.where(block: false) : it => {
-    math.display(it);
+  show math.equation.where(block: false): it => {
+    math.display(it)
   }
 
   set enum(numbering: "a) i)")
   let hd = [
-    #align(center)[
-      #set text(15pt)
+    #align(right)[
+      #set text(11pt)
       #title
     ]
+    #if bar {
+      line(length: 100%, stroke: .5pt)
+    }
   ]
 
   set page(
     paper: "a4",
     header: hd,
     numbering: page-numbering,
-    margin: (top: fontsize + 2em, bottom: 2em, left: 5em, right: 5em),
+    margin: (top: fontsize + 4em, bottom: 2em, left: 5em, right: 5em),
   )
 
   set grid(
@@ -145,7 +148,7 @@
 
 #let exercice(..args) = context {
   if show-exercises-state.get() {
-    _exercice_impl(..args);
+    _exercice_impl(..args)
   }
 }
 
@@ -162,7 +165,7 @@
 }
 
 #let notation = thmbox(
-  "theorem",
+  "notation",
   "Notation",
   base_level: 1,
   separator: "\n",
@@ -170,8 +173,20 @@
 )
 
 #let remark = thmbox(
-  "theorem",
+  "remark",
   "Remarque",
+  base_level: 1,
+  separator: "\n",
+  stroke: rgb("#dadada"),
+  fill: rgb("#dadada4c"),
+  bodyfmt: bd => {
+    set text(font: "New Computer Modern", style: "italic")
+    bd
+  },
+)
+#let method = thmbox(
+  "method",
+  "Méthode",
   base_level: 1,
   separator: "\n",
   stroke: rgb("#dadada"),
@@ -199,16 +214,15 @@
   "theorem",
   "Vocabulaire",
   base_level: 1,
-  separator : "\n",
+  separator: "\n",
   stroke: rgb("#9ddb7c"),
   fill: rgb("#a5db7c4c"),
-  bodyfmt: (bd) => {
-    set text(font: "New Computer Modern", style: "italic");
-    bd;
-  }
+  bodyfmt: bd => {
+    set text(font: "New Computer Modern", style: "italic")
+    bd
+  },
 )
 
-#let proof = thmproof("proof", "Preuve")
 #let _proof_impl = thmproof("proof", "Preuve")
 
 #let proof(..args) = context {
@@ -216,3 +230,4 @@
     _proof_impl(..args)
   }
 }
+
